@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulário - Conte-nos sobre sua Empresa</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="formulario-style.css">
+</head>
+
+<body>
+  <nav id="nav">
+    <a class="nav-logo">
+      <img src="assets/logoFoto.webp" alt="B.ORDER Logo">
+    </a>
+  </nav>
+
+  <!-- Cursor customizado (opcional - igual sua landing page) -->
+  <div class="cursor"></div>
+  <div class="cursor-ring"></div>
+
+  <!-- Container do formulário -->
+  <div class="form-container">
+
+    <!-- Cabeçalho -->
+    <div class="form-header">
+      <h1 class="form-title">Conte-nos sobre sua empresa</h1>
+      <p class="form-subtitle">Responda algumas perguntas para que possamos conhecer melhor seu negócio</p>
+    </div>
+
+    <!-- Barra de progresso -->
+    <div class="progress-bar">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
+    <div class="progress-text">
+      <span id="currentStep">1</span> de <span id="totalSteps">6</span>
+    </div>
+
+    <!-- Formulário -->
+    <form id="sliderForm">
+
+      <!-- Slide 1: Nome da Empresa -->
+      <div class="form-slide active" data-step="1">
+        <label class="form-label">Qual o nome da sua empresa?</label>
+        <input type="text" name="empresa_nome" class="form-input" placeholder="Digite o nome da empresa" required>
+      </div>
+
+      <!-- Slide 2: Segmento -->
+      <div class="form-slide" data-step="2">
+        <label class="form-label">Qual o segmento de atuação?</label>
+        <select name="segmento" class="form-select" required>
+          <option value="">Selecione uma opção</option>
+          <option value="tecnologia">Tecnologia</option>
+          <option value="saude">Saúde</option>
+          <option value="educacao">Educação</option>
+          <option value="varejo">Varejo</option>
+          <option value="servicos">Serviços</option>
+          <option value="industria">Indústria</option>
+          <option value="agronegocio">Agronegócio</option>
+          <option value="financeiro">Financeiro</option>
+          <option value="construcao">Construção</option>
+          <option value="outro">Outro</option>
+        </select>
+      </div>
+
+      <!-- Slide 3: Faturamento Anual -->
+      <div class="form-slide" data-step="3">
+        <label class="form-label">Qual o faturamento anual da empresa?</label>
+        <div class="radio-group">
+          <label class="radio-option">
+            <input type="radio" name="faturamento" value="0-100k" required>
+            <span class="radio-custom"></span>
+            <span class="radio-label">Até R$ 100 mil</span>
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="faturamento" value="100k-500k">
+            <span class="radio-custom"></span>
+            <span class="radio-label">R$ 100 mil - R$ 500 mil</span>
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="faturamento" value="500k-1m">
+            <span class="radio-custom"></span>
+            <span class="radio-label">R$ 500 mil - R$ 1 milhão</span>
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="faturamento" value="1m-5m">
+            <span class="radio-custom"></span>
+            <span class="radio-label">R$ 1 milhão - R$ 5 milhões</span>
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="faturamento" value="5m+">
+            <span class="radio-custom"></span>
+            <span class="radio-label">Acima de R$ 5 milhões</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Slide 4: Número de Funcionários -->
+      <div class="form-slide" data-step="4">
+        <label class="form-label">Quantos funcionários a empresa possui?</label>
+        <div class="radio-group">
+          <label class="radio-option">
+            <input type="radio" name="funcionarios" value="1-10" required>
+            <span class="radio-custom"></span>
+            <span class="radio-label">1 - 10 funcionários</span>
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="funcionarios" value="11-50">
+            <span class="radio-custom"></span>
+            <span class="radio-label">11 - 50 funcionários</span>
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="funcionarios" value="51-200">
+            <span class="radio-custom"></span>
+            <span class="radio-label">51 - 200 funcionários</span>
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="funcionarios" value="201-500">
+            <span class="radio-custom"></span>
+            <span class="radio-label">201 - 500 funcionários</span>
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="funcionarios" value="500+">
+            <span class="radio-custom"></span>
+            <span class="radio-label">Mais de 500 funcionários</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Slide 5: Contato -->
+      <div class="form-slide" data-step="5">
+        <label class="form-label">Qual o melhor e-mail para contato?</label>
+        <input type="email" name="email" class="form-input" placeholder="seu@email.com" required>
+
+        <label class="form-label" style="margin-top: 32px;">Telefone</label>
+        <input type="tel" name="telefone" class="form-input" placeholder="(00) 00000-0000" required>
+      </div>
+
+      <!-- Slide 6: Mensagem Adicional -->
+      <div class="form-slide" data-step="6">
+        <label class="form-label">Conte-nos mais sobre seus objetivos (opcional)</label>
+        <textarea name="mensagem" class="form-textarea" rows="6" placeholder="Descreva brevemente o que você busca..."></textarea>
+      </div>
+
+    </form>
+
+    <!-- Navegação -->
+    <div class="form-navigation">
+      <button type="button" class="btn btn-secondary" id="prevBtn" disabled>
+        Anterior
+      </button>
+      <button type="button" class="btn btn-primary" id="nextBtn">
+        Próximo
+      </button>
+      <button type="submit" class="btn btn-primary" id="submitBtn" style="display: none;">
+        Enviar
+      </button>
+    </div>
+
+    <!-- Mensagem de sucesso -->
+    <div class="success-message" id="successMessage">
+      <div class="success-icon">✓</div>
+      <h2>Obrigado!</h2>
+      <p>Suas informações foram enviadas com sucesso. Entraremos em contato em breve.</p>
+    </div>
+
+  </div>
+
+  <script src="formulario-script.js"></script>
+
+</body>
+
+</html>

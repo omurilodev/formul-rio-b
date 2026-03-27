@@ -1,0 +1,618 @@
+/* Importando a fonte Raleway (mesma da landing page) */
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap');
+
+/* Variáveis CSS (mesmas da landing page) */
+:root {
+  --green: #515A49;
+  --green-light: #5e6854;
+  --cream: #F5F0E8;
+  --white: #FAFAF8;
+  --text: #1A1A18;
+  --gold: #8B7355;
+  --gold-light: #b09a78;
+  --sans: 'Raleway', sans-serif;
+}
+
+/* Reset básico */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--sans);
+  background: var(--cream);
+  color: var(--text);
+  cursor: none;
+  overflow-x: hidden;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; width: 100%;
+    z-index: 100;
+    display: flex; align-items: center; justify-content: center;
+    padding: 30px 30px;
+    transition: background 0.4s, backdrop-filter 0.4s, padding 0.4s;
+    background: rgba(42, 56, 38, 0.92);
+  }
+
+  nav.scrolled {
+    background: rgba(42, 56, 38, 0.92);
+    backdrop-filter: blur(12px);
+    padding: 40px 60px;
+  }
+
+.nav-logo {
+  position: absolute;
+  left: 55%;
+  transform: translateX(-50%);
+}
+
+  
+.nav-logo img{
+  width: 50%;
+}
+
+
+
+  .nav-links {
+    position: absolute; right: 60px;
+    display: flex; gap: 36px; list-style: none;
+  }
+  .nav-links a {
+    font-family: var(--sans);
+    font-size: 0.9rem;
+    font-weight: 300;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(245,240,232,0.7);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--gold-light); }
+
+
+/* CURSOR CUSTOMIZADO (igual da landing page) */
+.cursor {
+  width: 10px;
+  height: 10px;
+  background: var(--gold);
+  border-radius: 50%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s, width 0.3s, height 0.3s, background 0.3s;
+}
+
+.cursor-ring {
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%, -50%);
+  transition: transform 0.18s ease-out, width 0.3s, height 0.3s;
+  opacity: 0.6;
+}
+
+/* Container do formulário */
+.form-container {
+  background: var(--white);
+  max-width: 1160px;
+  width: 100%;
+  padding: 60px;
+  border-radius: 2px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+  position: relative;
+  overflow: hidden;
+  margin-top: 50px;
+  padding-top: 30px !important;
+}
+
+/* Cabeçalho */
+.form-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-title {
+  font-family: var(--sans);
+  font-size: 2.2rem;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  color: var(--green);
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
+.form-subtitle {
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  font-weight: 300;
+  color: var(--text);
+  opacity: 0.7;
+  letter-spacing: 0.02em;
+  line-height: 1.6;
+}
+
+/* Barra de progresso */
+.progress-bar {
+  width: 100%;
+  height: 3px;
+  background: rgba(139, 115, 85, 0.15);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--gold) 0%, var(--gold-light) 100%);
+  width: 16.66%; /* 1/6 */
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.progress-text {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--text);
+  opacity: 0.6;
+  letter-spacing: 0.1em;
+  margin-bottom: 50px;
+  font-weight: 500;
+}
+
+/* Slides do formulário */
+#sliderForm {
+  position: relative;
+  min-height: 320px;
+  margin-bottom: -50px;
+}
+
+.form-slide {
+  position: absolute;
+  top: -50px;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateX(30px);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.form-slide.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(0);
+  position: relative;
+}
+
+.form-slide.exit-left {
+  transform: translateX(-30px);
+  opacity: 0;
+}
+
+/* Labels */
+.form-label {
+  display: block;
+  font-family: var(--sans);
+  font-size: 1.3rem;
+  font-weight: 300;
+  letter-spacing: 0.02em;
+  color: var(--green);
+  margin-bottom: 24px;
+  line-height: 1.4;
+}
+
+/* Inputs de texto */
+.form-input {
+  width: 100%;
+  padding: 18px 24px;
+  font-family: var(--sans);
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--text);
+  background: var(--cream);
+  border: 2px solid transparent;
+  border-radius: 2px;
+  outline: none;
+  transition: all 0.3s ease;
+  letter-spacing: 0.02em;
+}
+
+.form-input:focus {
+  border-color: var(--gold-light);
+  background: var(--white);
+  box-shadow: 0 0 0 3px rgba(176, 154, 120, 0.2);
+}
+
+.form-input::placeholder {
+  color: var(--text);
+  opacity: 0.4;
+}
+
+/* Select */
+.form-select {
+  width: 100%;
+  padding: 18px 24px;
+  font-family: var(--sans);
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--text);
+  background: var(--cream);
+  border: 2px solid transparent;
+  border-radius: 2px;
+  outline: none;
+  transition: all 0.3s ease;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%238B7355' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 20px center;
+  padding-right: 50px;
+}
+
+.form-select:focus {
+  border-color: var(--gold-light);
+  background-color: var(--white);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%23b09a78' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+  box-shadow: 0 0 0 3px rgba(176, 154, 120, 0.2);
+}
+
+/* Textarea */
+.form-textarea {
+  width: 100%;
+  padding: 18px 24px;
+  font-family: var(--sans);
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--text);
+  background: var(--cream);
+  border: 2px solid transparent;
+  border-radius: 2px;
+  outline: none;
+  transition: all 0.3s ease;
+  letter-spacing: 0.02em;
+  resize: vertical;
+  min-height: 150px;
+}
+
+.form-textarea:focus {
+  border-color: var(--gold-light);
+  background: var(--white);
+  box-shadow: 0 0 0 3px rgba(176, 154, 120, 0.2);
+}
+
+.form-textarea::placeholder {
+  color: var(--text);
+  opacity: 0.4;
+}
+
+/* Radio buttons customizados */
+.radio-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.radio-option {
+  display: flex;
+  align-items: center;
+  padding: 20px 24px;
+  background: var(--cream);
+  border: 2px solid transparent;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.radio-option:hover {
+  background: rgba(139, 115, 85, 0.05);
+  border-color: rgba(139, 115, 85, 0.2);
+}
+
+.radio-option input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.radio-custom {
+  width: 22px;
+  height: 22px;
+  border: 2px solid var(--gold);
+  border-radius: 50%;
+  margin-right: 16px;
+  position: relative;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+.radio-custom::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  width: 10px;
+  height: 10px;
+  background: var(--gold);
+  border-radius: 50%;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.radio-option input[type="radio"]:checked ~ .radio-custom::after {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.radio-option input[type="radio"]:checked ~ .radio-custom {
+  border-color: var(--gold);
+  border-width: 2px;
+}
+
+.radio-label {
+  font-family: var(--sans);
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--text);
+  letter-spacing: 0.02em;
+}
+
+/* Navegação */
+.form-navigation {
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  position: relative;
+  z-index: 10;
+}
+
+.btn {
+  flex: 1;
+  padding: 18px 40px;
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.btn-primary {
+  background: var(--green);
+  color: var(--white);
+}
+
+.btn-primary:hover {
+  background: var(--green-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(81, 90, 73, 0.25);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--text);
+  border: 2px solid var(--gold);
+}
+
+.btn-secondary:hover {
+  background: var(--gold);
+  color: var(--white);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(139, 115, 85, 0.25);
+}
+
+.btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* Mensagem de sucesso */
+.success-message {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--white);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s ease;
+  padding: 60px;
+  text-align: center;
+}
+
+.success-message.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.success-icon {
+  width: 80px;
+  height: 80px;
+  background: var(--green);
+  color: var(--white);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  margin-bottom: 30px;
+  animation: scaleIn 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes scaleIn {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.success-message h2 {
+  font-family: var(--sans);
+  font-size: 2rem;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  color: var(--green);
+  margin-bottom: 16px;
+}
+
+.success-message p {
+  font-family: var(--sans);
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--text);
+  opacity: 0.7;
+  line-height: 1.6;
+  letter-spacing: 0.02em;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  body {
+    padding: 20px 15px;
+    padding-top: 100px;
+  }
+
+  .form-container {
+    padding: 40px 30px;
+  }
+
+  .form-title {
+    font-size: 1.8rem;
+  }
+
+  .form-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .form-label {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+  }
+
+  .form-input,
+  .form-select,
+  .form-textarea,
+  .radio-label {
+    font-size: 0.95rem;
+  }
+
+  .btn {
+    padding: 16px 30px;
+    font-size: 0.85rem;
+  }
+
+  .form-navigation {
+    flex-direction: column-reverse;
+    gap: 12px;
+  }
+
+  .radio-group {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .radio-option {
+    padding: 16px 20px;
+  }
+
+  #sliderForm {
+    min-height: 420px;
+  }
+}
+
+@media (max-width: 425px) {
+  body {
+    padding: 15px 10px;
+    padding-top: 90px;
+  }
+
+  .nav-logo{
+    width: 60%;
+    left: 65%;
+  }
+
+
+  .form-container {
+    padding: 30px 20px;
+  }
+
+  .form-title {
+    font-size: 1.4rem;
+  }
+
+  .form-header {
+    margin-bottom: 25px;
+  }
+
+  .form-label {
+    font-size: 1rem;
+    margin-bottom: 16px;
+  }
+
+  .form-container{
+    margin-top: -20px !important;
+  }
+
+
+  .progress-text {
+    margin-bottom: 80px;
+  }
+
+  .radio-group {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .radio-option {
+    padding: 14px 16px;
+  }
+
+  #sliderForm {
+    min-height: 420px; 
+  }
+  
+  .success-message {
+    padding: 30px 20px;
+  }
+  
+  .success-message h2 {
+    font-size: 1.6rem;
+  }
+}
