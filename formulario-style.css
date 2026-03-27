@@ -555,6 +555,12 @@ body {
   #sliderForm {
     min-height: 420px;
   }
+.cursor{
+  display: none !important;
+}
+.cursor-ring{
+  display: none !important;
+}
 }
 
 @media (max-width: 425px) {
